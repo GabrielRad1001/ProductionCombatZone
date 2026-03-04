@@ -1,0 +1,23 @@
+# Combat Zone Moisei - Backend Dependencies
+# Only packages actually used in server.py and google_sheets_service.py
+
+# Web framework
+fastapi==0.110.1
+uvicorn==0.25.0
+python-multipart>=0.0.9
+
+# Database
+motor==3.3.1
+pymongo==4.5.0
+
+# Data validation
+pydantic>=2.6.4
+
+# HTTP requests (Google Sheets integration)
+requests>=2.31.0
+
+# Environment
+python-dotenv>=1.0.1
+
+# Timezone data (required on slim/alpine images)
+tzdata>=2024.2

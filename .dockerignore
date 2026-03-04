@@ -1,0 +1,48 @@
+# Git
+.git/
+.gitignore
+.gitconfig
+
+# Documentation
+*.md
+!DOCKER.md
+
+# Node modules
+**/node_modules/
+**/npm-debug.log
+**/yarn-error.log
+
+# Python
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+**/venv/
+**/env/
+
+# Build artifacts
+**/build/
+**/dist/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test files
+**/tests/
+**/test_reports/
+**/.pytest_cache/
+**/coverage/
+
+# Memory/logs
+memory/
+*.log
+
+# Config that should not be copied
+.env

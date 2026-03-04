@@ -1,0 +1,91 @@
+# Combat Zone Moisei - Docker Deployment
+# Optimized for Linux/Docker environment
+
+# === Environment & Secrets ===
+*.env
+*.env.*
+.env.local
+.env.*.local
+!.env.example
+*token.json*
+*credentials.json*
+*.pem
+
+# === IDE and Editors ===
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# === Dependencies ===
+node_modules/
+frontend/node_modules/
+backend/venv/
+backend/.venv/
+.pnp/
+.pnp.js
+.yarn/install-state.gz
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# === Build Artifacts ===
+frontend/build/
+frontend/dist/
+backend/build/
+backend/dist/
+*.tsbuildinfo
+
+# === Testing ===
+coverage/
+.nyc_output/
+test_reports/
+*.log
+
+# === Logs ===
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+*.log
+
+# === Docker (local development) ===
+docker-compose.override.yml
+.env.docker
+
+# === System Files ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === Development Directories ===
+memory/
+.emergent/
+.chainlit/
+.ipynb_checkpoints/
+
+# === Archives & Large Files ===
+*.zip
+*.tar.gz
+*.tar
+*.tgz
+*.rar
+*.7z
+
+# === MongoDB ===
+dump/
+dump.rdb
+
+# === Deployment ===
+.vercel/
+.netlify/
