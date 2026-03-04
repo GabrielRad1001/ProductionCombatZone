@@ -1895,7 +1895,19 @@
 .footer-contact {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 20px;
+}
+
+.contact-container-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Reservation Form Section Spacing */
+.reservation-form-section {
+  padding: 60px 0 80px;
+  background-color: var(--bg-page);
 }
 
 .contact-item-footer {
@@ -1906,6 +1918,12 @@
   font-weight: 400;
   font-size: 0.95rem;
   color: var(--text-white);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-item-footer:hover {
+  color: var(--brand-primary);
 }
 
 .contact-icon-footer {

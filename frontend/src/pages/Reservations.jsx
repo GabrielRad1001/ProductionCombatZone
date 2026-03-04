@@ -17,7 +17,7 @@ const Reservations = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const preSelectedPackage = searchParams.get('pachet') || '';
-  const preSelectedGameType = searchParams.get('tip') || 'lasertag';
+  const preSelectedGameType = searchParams.get('tip') || '';
   
   const [gameType, setGameType] = useState(preSelectedGameType);
   const [formData, setFormData] = useState({
@@ -34,7 +34,7 @@ const Reservations = () => {
   const [loadingTimes, setLoadingTimes] = useState(false);
   const { toast } = useToast();
 
-  const currentPricing = gameType === 'lasertag' ? mockData.pricingLasertag : mockData.pricingPaintball;
+  const currentPricing = gameType === 'lasertag' ? mockData.pricingLasertag : gameType === 'paintball' ? mockData.pricingPaintball : [];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -100,7 +100,28 @@ const Reservations = () => {
     return `${year}-${month}-${day}`;
   };
 
+  const validateForm = () => {
+    if (!gameType) {
+      toast({
+        title: "Eroare",
+        description: "Te rugăm să selectezi tipul de activitate (Lasertag sau Paintball).",
+        variant: "destructive"
+      });
+      return false;
+    }
+    if (!formData.name || !formData.email || !formData.phone || !formData.date || !formData.time || !formData.people) {
+      toast({
+        title: "Eroare",
+        description: "Te rugăm să completezi toate câmpurile obligatorii.",
+        variant: "destructive"
+      });
+      return false;
+    }
+    return true;
+  };
+
   const handleWhatsAppReservation = () => {
+    if (!validateForm()) return;
     const gameTypeText = gameType === 'lasertag' ? 'Lasertag' : 'Paintball';
     const packageText = formData.package ? `Pachet selectat: ${formData.package} (${gameTypeText})%0A` : `Tip joc: ${gameTypeText}%0A`;
     const message = `Bună! Aș dori să fac o rezervare:%0A%0A${packageText}Nume: ${formData.name}%0AEmail: ${formData.email}%0ATelefon: ${formData.phone}%0AData: ${formData.date}%0AOra: ${formData.time}%0ANumăr persoane: ${formData.people}%0AMesaj: ${formData.message}`;
@@ -112,6 +133,7 @@ const Reservations = () => {
   };
 
   const handleEmailReservation = () => {
+    if (!validateForm()) return;
     const gameTypeText = gameType === 'lasertag' ? 'Lasertag' : 'Paintball';
     const packageText = formData.package ? `Pachet selectat: ${formData.package} (${gameTypeText})%0A` : `Tip joc: ${gameTypeText}%0A`;
     const subject = 'Rezervare Combat Zone Moisei';
@@ -132,25 +154,6 @@ const Reservations = () => {
           <h1 className="page-title">REZERVĂRI</h1>
           <p className="page-subtitle">Rezervă-ți locul pentru cea mai tare experiență laser tag</p>
           
-          {/* Game Type Toggle */}
-          <div className="game-type-toggle" data-testid="reservations-game-toggle">
-            <button 
-              className={`toggle-btn ${gameType === 'lasertag' ? 'active' : ''}`}
-              onClick={() => setGameType('lasertag')}
-              data-testid="reservations-lasertag-btn"
-            >
-              <Crosshair className="toggle-icon" />
-              Lasertag
-            </button>
-            <button 
-              className={`toggle-btn ${gameType === 'paintball' ? 'active' : ''}`}
-              onClick={() => setGameType('paintball')}
-              data-testid="reservations-paintball-btn"
-            >
-              <Target className="toggle-icon" />
-              Paintball
-            </button>
-          </div>
           
           <p className="payment-warning">
             ⚠️ Rezervările se vor confirma doar după achitarea avansului de 50% din totalul rezervării
@@ -170,6 +173,26 @@ const Reservations = () => {
               </CardHeader>
               <CardContent>
                 <form className="reservation-form">
+                  <div className="form-group">
+                    <label htmlFor="gameType" className="form-label">Tip activitate *</label>
+                    <select
+                      id="gameType"
+                      name="gameType"
+                      value={gameType}
+                      onChange={(e) => {
+                        setGameType(e.target.value);
+                        setFormData({ ...formData, package: '' });
+                      }}
+                      required
+                      className="form-input"
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <option value="">Selectează tipul de activitate...</option>
+                      <option value="lasertag">Lasertag</option>
+                      <option value="paintball">Paintball</option>
+                    </select>
+                  </div>
+
                   <div className="form-group">
                     <label htmlFor="package" className="form-label">Pachet dorit *</label>
                     <select
