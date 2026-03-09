@@ -122,32 +122,28 @@ export const mockData = {
   pricingPaintball: [
     {
       id: 1,
-      name: "Pachet simplu",
-      price: "150 RON/persoană",
+      name: "Refill",
+      price: "30 RON/100 bile",
       duration: "",
       features: [
-        "Acces la arenă pentru 6-12 persoane",
-        "Echipament complet inclus (mască, armă, vestă)",
-        "100 bile paintball incluse",
-        "Organizare pe echipe",
-        "Rezerve de apă la discreție",
-        "2 sesiuni de joc (60 minute)"
+        "Refill necesar pentru continuarea jocului după epuizarea bilelor inițiale",
+        "Bile de paintball de calitate superioară pentru o experiență optimă",
+        "Disponibil în timpul jocului pentru a menține adrenalina la cote maxime"
       ],
       popular: false
     },
     {
       id: 2,
-      name: "Pachet full packed",
-      price: "200 RON/persoană",
+      name: "Pachet Paintball",
+      price: "120 RON/persoană",
       duration: "",
       features: [
         "Acces pentru 6-12 persoane",
-        "Echipament complet inclus (mască, armă, vestă)",
-        "200 bile paintball incluse",
-        "Organizare pe echipe",
-        "O rezervă de pizza sau crispy pentru fiecare",
-        "Apă sau sucuri la discreție",
-        "3 sesiuni de joc (90 minute)"
+        "Echipament complet inclus (mască, armă, salopetă)",
+        "300 bile paintball incluse",
+        "Organizare pe echipe sau individual",
+        "Apă la discreție",
+        "Sesiune de joc de 2 ore sau epuizarea bilelor"
       ],
       popular: true
     },
